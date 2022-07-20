@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  :root {
+    --color-primary: #14213d;
+    --color-secondary: #fca311;
+    /* ... */
+  }
+}
 
 /* RESET */
 
@@ -10,8 +17,9 @@
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
 }
-app {
+body {
   width: 100vw;
+  height: 100vh;
 }
 
 :root {
@@ -37,9 +45,43 @@ p {
   font-family: var(--text-font);
   font-weight: 400;
 }
-li,
-a {
-  list-style-type: none;
+.a {
+  list-style: none;
   text-decoration: none;
+  color: var(--color2);
 }
+
 /* VARIABLES GLOBALES */
+.navbar {
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  background-color: var(--MainColor);
+}
+.nav-items {
+  color: var(--color2);
+}
+.nav-items:hover {
+  color: var(--color3);
+}
+.logo-wrapper img {
+  width: 200px;
+}
+@media screen and (max-width: 1024px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-items {
+    margin-bottom: 2rem;
+  }
+  #menu-wrapper {
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
