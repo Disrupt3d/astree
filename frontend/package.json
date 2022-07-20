@@ -10,12 +10,20 @@
     "fix": "prettier --write . && eslint --fix --ext .jsx ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.6",
+    "axios": "^0.27.2",
+    "bulma": "^0.9.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "template-fullstack": "file:.."
+    "react-hook-form": "^7.33.1",
+    "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.0.7",
+    "template-fullstack": "file:..",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.7",
     "eslint": "^8.11.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -26,7 +34,9 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.0",
+    "postcss": "^8.4.14",
     "prettier": "^2.5.1",
+    "tailwindcss": "^3.1.6",
     "vite": "^2.8.0"
   }
 }

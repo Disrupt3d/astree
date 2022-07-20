@@ -1,9 +1,10 @@
 import "./App.css";
+import "bulma/css/bulma.min.css";
 
 function App() {
   return (
     <div className="App">
-      <p>Hello</p>
+      <h1>Hello</h1>
     </div>
   );
 }
