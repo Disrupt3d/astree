@@ -31,8 +31,10 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`user` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
 
 INSERT INTO `user`(`user_id`, `email`, `hashedpassword`) VALUES
-(1,"genin.alexandre@live.fr", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ');
-(2,"kevin.lavigne@gmail.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ');
+(1,"genin.alexandre@live.fr", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
+(2,"kevin.lavigne@gmail.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
+(3,"scarlettjohannson@wonder.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
+(4,"randomuser@random.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ');
 
 
 
@@ -45,10 +47,11 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`profile` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `pseudo` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
   `telescope` VARCHAR(45) NULL,
   `camera` VARCHAR(45) NULL,
   `biography` MEDIUMTEXT NULL,
-  `image_url` VARCHAR(45) NULL,
+  `image_url` VARCHAR(200) NULL,
   `image_alt` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_profile_user_idx` (`user_id` ASC) VISIBLE,
@@ -61,6 +64,11 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`profile` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO `profile` (`id`, `user_id`, `pseudo`, `city`, `telescope`, `camera`, `biography`, `image_url`, `image_alt` ) VALUES
+(1, 1, 'Disrupt3d','Avignon', 'skywatcher 150/750','canon D720', "Amateur de astrophotographie et des étoiles, j'ai acquis mon premier télescope il y a 8 mois.", 'https://i.ibb.co/BcLNh2Q/AG-PROFIL-2.jpg', 'photo de profil'),
+(2, 2, '3vilAngel','Reims', 'Omegon N 150/750 EQ-3','CANON EOS 6D MARK II', "je m'apelle Kévin, j'ai  24 ans je vis dans la champagne et je fais de l'observation depuis  3 ans.", 'https://i.ibb.co/cXJmtNm/ian-dooley-d1-UPki-Fd04-A-unsplash.jpg', 'photo de profil'),
+(3, 3, 'Beautiful_Scarlet','Saint-Tropez', 'Dobson Orion N 356/1650','SONY Alpha a6000', "Hi there, i'am a begeener in astropics,and i just wanna  find some new content for my instagram account.Would love to  participe events and watch the sky with you guys!", 'https://i.ibb.co/z20mXPg/scarlett-johannson.jpg', 'photo de profil'),
+(4, 4, null,'Paris', 'Celestron PowerSeeker 127 EQ','Panasonic LUMIX G7', "j'ai attéri là un peu par hasard", null, null);
 
 -- -----------------------------------------------------
 -- Table `astree_db`.`photo`
@@ -70,10 +78,11 @@ DROP TABLE IF EXISTS `astree_db`.`photo` ;
 CREATE TABLE IF NOT EXISTS `astree_db`.`photo` (
   `photo_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `date` DATE NOT NULL,
-  `dpt_location` VARCHAR(45) NOT NULL,
+  `date` VARCHAR(10) NOT NULL,
+  `dpt_location` VARCHAR(2) NOT NULL,
   `description` MEDIUMTEXT NOT NULL,
   `photo_url` VARCHAR(200) NOT NULL,
+  `photo_alt` VARCHAR(100) NOT NULL,
   `city_location` VARCHAR(45) NOT NULL,
   `profile_id` INT NOT NULL,
   PRIMARY KEY (`photo_id`, `profile_id`),
@@ -85,6 +94,14 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`photo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO `photo` (`photo_id`, `title`, `date`, `dpt_location`, `description`, `photo_url`, `photo_alt`,`city_location`, `profile_id`) VALUES
+(1, "Galaxie d'andromède",'12/07/22', '73',"La météo annonçait une nuit clémente hier soir, j'ai donc sorti mon perl 150/750. Je fais de l'astrophotograhie depuis environ 1mois, et je voulais donc tenter pour la première fois de faire l'iconique galaxie d'andromede.Finalement le ciel était un peu voilé, et une bonne moitié de lune était présente à partir de 00h30. J'ai quand même pu réaliser environ 4h de temps de pose.Iso 800 30 darks, flats, offsets Pretraitement & traitement siril Post traitement gimp Perl 150/750 Eq 3-2 motorisée en ad Canon eos 550d", 'https://i.ibb.co/dMKpsBf/galaxy-andromede.jpg', "la galaxie d'andromede", 'Annecy', 1),
+(2, "Nébuleuse L16",'17/07/22', '84',"Photo prise avec un SW150/750 sur montuire EQ3.2 motorisée RA et canon 1300d non défiltré. 110 poses de 30s ISO800 entre 0h30 et 2h environ.20 DARKS/ FLAT /OFFSET.traitement sur SIRIL et GIMP.Je suis assez satisfait du résultat vu sa position très basse sur l'horizon et du seeing pas fou fou  ", 'https://i.ibb.co/ZgT5WwV/nebuleuse-m16.jpg', "la nebuleuse M16", 'Avignon', 3),
+(3, "Nébuleuse M45",'07/06/22', '13',"Le set-up:lunette skywatcher 80ed/correcteur-réducteur 0.85/ asi 2600 mm/ RAF/DO avec asi 290 mini/AZEQ6/ pilotage via Asiair pro.Acquisitions: Luminance: 80*3min à gain 0. RVB: 1h par filtre avec sub de 3 min à gain 0 DOF Traitement Pixinsight", 'https://i.ibb.co/nBXNpxW/M45.jpg', "la nebuleuse M45", 'Noves', 2),
+(4, "Nébuleuse du Sorcier NGC7380",'19/07/22', '60'," le sorcier en 6 heures sur deux soirs.eq5 eqstar SW130PDS ASI533MC + altair tri-bande, autoguidage PHD2 sur lunette guidée. poses unitaire de 180 secondes, sur 6 heures au total.traitement Siril, starnet, PS, LR", 'https://i.ibb.co/phh3Sk5/NGC7380-sorcier.jpg', "la nebuleuse du sorcier", 'Lille', 2),
+(5, "Lune",'20/07/22', '30'," Photo prise avec Celestron C8, réducteur f6.3, asi294mc pro. 197 images stackées. ", 'https://i.ibb.co/Tqbs3Nx/lune.jpg',"la lune", 'Noves', 1),
+(6, "M3 et comète Léonard",'03/04/22', '34',"Lunette Evostar 100 ED, Monture NEQ5 goto,réducteur 0,85,Canon 550 D non défilltré.8 poses de 40 secondes chacune,iso 800 traitement SIRIL ,GIMP.", 'https://i.ibb.co/JygJZTj/M3-leonard.jpg', "la M3 rencontre une comète", 'Lattes', 3);
 
 
 -- -----------------------------------------------------

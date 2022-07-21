@@ -4,14 +4,12 @@ class UserManager extends AbstractManager {
   static table = "user";
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN profile ON user.id = ${this.table}.user_id INNER JOIN profile ON profile.image_url = ${this.table}.images_id`
-    );
+    return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
   find(id) {
     return this.connection.query(
-      `SELECT * FROM ${this.table} INNER JOIN user ON user_id = ${this.table}.user_id INNER JOIN images ON images.id = ${this.table}.images_id WHERE ${this.table}.id = ?`,
+      `SELECT * FROM ${this.table} WHERE ${this.table}_id = ?`,
       [id]
     );
   }
