@@ -88,6 +88,31 @@ p {
   width: 64px;
 }
 
+#updateobservation {
+  background-image: url(./assets/PYSAGE-SLEEPIEST.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#updateform input,
+#updateform textarea {
+  background-color: #e5e5e5;
+  border-radius: 3px;
+  color: var(--MainColor);
+  font-weight: 600;
+}
+#newobservation {
+  background-image: url(./assets/parallaxe-sky.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#deletebutton {
+  color: #e5e5e5;
+  background-color: red;
+}
+
 /*RESPONSIVE */
 
 @media screen and (max-width: 1024px) {

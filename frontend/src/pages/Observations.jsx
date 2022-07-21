@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 
 import ExportContextUser from "../contexts/UserContext";
@@ -38,17 +39,17 @@ function Observations() {
               <div
                 id="observationcards"
                 key={el.title}
-                className="card w-1/3 p-3  m-3 bg-third flex-wrap"
+                className="card w-1/3 p-2  m-3 bg-third flex-wrap"
               >
-                <div className="card-header-title is-centered text-center title is-4 bg-primary rounded-lg text-secondary">
+                <div className="card-header-title is-centered text-center title is-4 bg-primary rounded-sm text-secondary">
                   {el.title}
                 </div>
 
                 <div className="card-image">
                   <img className=" " src={el.photo_url} alt={el.photo_alt} />
                 </div>
-                <div className="card-content">
-                  <div className="media items-center justify-center">
+                <div className="card-content shadow-sm">
+                  <div className="media items-center justify-center  p-3">
                     <div
                       id="cardprofilepicture"
                       className="media-left  bg-secondary  rounded-full"
@@ -67,7 +68,7 @@ function Observations() {
                     </div>
                   </div>
 
-                  <div className="content  text-sm text-center w-full m-1">
+                  <div className="content  text-sm text-center w-full m-1 p-5">
                     {el.description} <br />
                     <br />
                     <time className="m-3">
@@ -78,12 +79,11 @@ function Observations() {
                   </div>
                   {user.id === el.profile_id ? (
                     <footer className="card-footer justify-evenly m-5">
-                      <button type="submit" className="button is-info">
-                        Editer
-                      </button>
-                      <button type="submit" className="button is-danger">
-                        Supprimer
-                      </button>
+                      <NavLink to={`/observations/modifier/${el.photo_id}`}>
+                        <button type="submit" className="button is-info">
+                          Editer
+                        </button>
+                      </NavLink>
                     </footer>
                   ) : (
                     ""

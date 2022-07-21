@@ -7,7 +7,7 @@ import UserAccount from "./UserAccount";
 function Navbar() {
   return (
     <div className="">
-      <nav className="navbar ">
+      <nav className="navbar  ">
         <div className="logo-wrapper">
           <img src={Logo} alt="Logo" width="150px" />
         </div>
@@ -19,7 +19,7 @@ function Navbar() {
           <Link to="/observations" className="nav-items">
             Observations
           </Link>
-          <Link to="/observations/add" className="nav-items">
+          <Link to="/observations/ajouter" className="nav-items">
             Ajouter
           </Link>
           <Link to="/evenements" className="nav-items">
