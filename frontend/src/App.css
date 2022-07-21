@@ -3,9 +3,9 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --color-primary: #14213d;
-    --color-secondary: #fca311;
-    /* ... */
+    --color-primary: 20 33 61;
+    --color-secondary: 252 163 17;
+    --color-third: 229 229 229;
   }
 }
 
@@ -33,7 +33,6 @@ body {
   --color3: #fca311;
   --color4: #e5e5e5;
   --color5: #000000;
-  --labelbackground: #8b8b8b;
 }
 
 h1 {
@@ -52,6 +51,8 @@ p {
 }
 
 /* VARIABLES GLOBALES */
+
+/*NAVBAR */
 .navbar {
   width: 100vw;
   position: fixed;
@@ -64,9 +65,18 @@ p {
 .nav-items:hover {
   color: var(--color3);
 }
-.logo-wrapper img {
-  width: 200px;
+
+/*NAVBAR */
+
+#loginpage {
+  background-image: url(./assets/background-2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
+/*RESPONSIVE */
+
 @media screen and (max-width: 1024px) {
   nav {
     flex-direction: column;
