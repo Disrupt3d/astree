@@ -13,6 +13,7 @@ import Signin from "./components/Signin";
 import Login from "./components/Login";
 import ProtectedRoute from "./layouts/ProtectedRoute";
 import UserLoggedLayout from "./layouts/UserLoggedLayout";
+import UpdateObservation from "./pages/UpdateObservation";
 // import "bulma/css/bulma.min.css";
 
 function App() {
@@ -34,9 +35,13 @@ function App() {
             }
           >
             <Route path="/observations" element={<Observations />} />
-            <Route path="/observations/add" element={<NewObservation />} />
+            <Route path="/observations/ajouter" element={<NewObservation />} />
             <Route path="/evenements" element={<Events />} />
             <Route path="/profil" element={<Profile />} />
+            <Route
+              path="/observations/modifier/:id"
+              element={<UpdateObservation />}
+            />
           </Route>
         </Routes>
       </Router>
