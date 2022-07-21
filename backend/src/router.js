@@ -43,6 +43,6 @@ router.post("/observation", ObservationController.add);
 // Edit a specific observation
 router.put("/observation/:id", ObservationController.edit);
 // Delete an observation with id
-router.delete("/:id", ObservationController.delete);
+router.delete("/observation/:id", ObservationController.delete);
 
 module.exports = router;
