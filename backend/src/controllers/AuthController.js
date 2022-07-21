@@ -52,7 +52,6 @@ class AuthController {
           .status(400)
           .send({ error: "Invalid Credentials, please retry" });
       }
-
       const validPass = await verifyPassword(
         req.body.password,
         userExist.hashedpassword
@@ -61,7 +60,7 @@ class AuthController {
         return res.status(400).send("Email or Password is wrong");
       }
 
-      const profile = await models.profile.find(userExist.id);
+      const profile = await models.profile.find(userExist.user_id);
       delete profile.id;
 
       const token = jwt.sign(
@@ -76,7 +75,7 @@ class AuthController {
         .cookie("user_token", token, {
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         })
-        .json({ ...profile[0], email: userExist.email, id: userExist.id });
+        .json({ ...profile[0], email: userExist.email, id: userExist.user_id });
     } catch (err) {
       console.error(err);
       return res.status(401).send(err);

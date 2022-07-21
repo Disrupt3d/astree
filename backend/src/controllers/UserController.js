@@ -2,7 +2,7 @@ const models = require("../models");
 
 class UserController {
   static browse = (req, res) => {
-    models.profile
+    models.user
       .findAll()
       .then(([rows]) => {
         res.send(rows);
@@ -14,7 +14,7 @@ class UserController {
   };
 
   static read = (req, res) => {
-    models.profile
+    models.user
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {

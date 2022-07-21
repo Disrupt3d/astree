@@ -30,33 +30,22 @@ class ProfileController {
   };
 
   static edit = (req, res) => {
-    const user = JSON.parse(req.body.user);
-    delete user.image_url;
-    if (!req.file) {
-      models.profile
-        .update(user, req.params.id)
-        .then(() => {
-          res.status(200).json(user);
-        })
-        .catch((err) => {
-          console.error(err);
-          res
-            .status(500)
-            .send("erreur pendant les modifications sur votre profil");
-        });
-    } else {
-      models.profile
-        .update({ ...user, image_url: req.image_url }, req.params.id)
-        .then(() => {
-          res.status(200).json({ ...user, image_url: req.image.url });
-        })
-        .catch((err) => {
-          console.error(err);
-          res
-            .status(500)
-            .send("erreur pendant les modifications sur votre profil");
-        });
-    }
+    const profile = req.body;
+    profile.id = parseInt(req.params.id, 10);
+
+    models.profile
+      .update(profile, profile.id)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
   };
 }
 

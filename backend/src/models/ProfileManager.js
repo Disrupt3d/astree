@@ -4,17 +4,14 @@ class ProfileManager extends AbstractManager {
   static table = "profile";
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} JOIN user on ${this.table}.user_id = user.user_id`
-    );
+    return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
   find(id) {
     return this.connection
-      .query(
-        `SELECT * FROM ${this.table} JOIN user on ${this.table}.user_id = user.user_id WHERE ${this.table}.user_id = ?`,
-        [id]
-      )
+      .query(`SELECT * FROM ${this.table}  WHERE ${this.table}.user_id = ?`, [
+        id,
+      ])
       .then((res) => res);
   }
 
@@ -27,7 +24,7 @@ class ProfileManager extends AbstractManager {
 
   update(profile, id) {
     return this.connection.query(
-      `UPDATE ${this.table}  SET ? WHERE user_id = ?`,
+      `UPDATE ${this.table}  SET ? WHERE ${this.table}.user_id = ?`,
       [profile, id]
     );
   }
