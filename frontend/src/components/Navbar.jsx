@@ -2,11 +2,12 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import Logo from "../assets/Astree-logo.png";
+import UserAccount from "./UserAccount";
 
 function Navbar() {
   return (
-    <div>
-      <nav className="navbar flex">
+    <div className="">
+      <nav className="navbar ">
         <div className="logo-wrapper">
           <img src={Logo} alt="Logo" width="150px" />
         </div>
@@ -25,7 +26,7 @@ function Navbar() {
             Evenements
           </Link>
           <Link to="/profil" className="nav-items">
-            Profil
+            <UserAccount />
           </Link>
         </div>
       </nav>

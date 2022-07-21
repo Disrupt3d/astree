@@ -1,3 +1,4 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,9 +55,6 @@ p {
 
 /*NAVBAR */
 .navbar {
-  width: 100vw;
-  position: fixed;
-  bottom: 0px;
   background-color: var(--MainColor);
 }
 .nav-items {
@@ -73,6 +71,21 @@ p {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#observations {
+  background-image: url(./assets/background-3.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#cardprofilepicture {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 64px;
+  width: 64px;
 }
 
 /*RESPONSIVE */

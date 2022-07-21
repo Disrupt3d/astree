@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 function UserLoggedLayout() {
   return (
-    <div className="flex w-screen h-full  ">
+    <div className="flex flex-col">
       <Navbar />
       <Outlet />
     </div>
