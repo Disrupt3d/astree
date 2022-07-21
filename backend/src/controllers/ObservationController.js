@@ -64,9 +64,9 @@ class ObservationController {
 
   static delete = (req, res) => {
     models.photo
-      .delete(req.params.id)
+      .deleteObservation(req.params.id)
       .then(() => {
-        res.status(204).send("photo deleted successfuly");
+        res.status(204).send("photo deleted successfully");
       })
       .catch((err) => {
         console.error(err);

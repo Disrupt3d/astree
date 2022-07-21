@@ -38,6 +38,13 @@ class observationManager extends AbstractManager {
       [observation, id]
     );
   }
+
+  deleteObservation(id) {
+    return this.connection.query(
+      `delete from ${this.table} where photo_id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = observationManager;
