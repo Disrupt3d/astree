@@ -87,6 +87,13 @@ p {
   height: 64px;
   width: 64px;
 }
+#logout {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 64px;
+  width: 64px;
+}
 
 #updateobservation {
   background-image: url(./assets/PYSAGE-SLEEPIEST.png);
@@ -113,6 +120,16 @@ p {
   background-color: red;
 }
 
+#profilepage {
+  background-image: url(./assets/background-3.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#observationcards {
+  background-color: #e5e5e5;
+}
+
 /*RESPONSIVE */
 
 @media screen and (max-width: 1024px) {
@@ -131,5 +148,21 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  #observationcards {
+    width: 50%;
+  }
+  #filterinput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #filterinput input {
+    width: 40%;
+    text-align: center;
+  }
+  #cardprofilepicture {
+    height: 32px;
+    width: 32px;
   }
 }

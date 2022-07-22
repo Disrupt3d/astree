@@ -46,7 +46,7 @@ function NewObservation() {
       <h2 className="m-5 flex justify-center items-center text-4xl text-secondary font-bold">
         Ajouter une Observation Astrale
       </h2>
-      <div className=" flex flex-col w-6/12 items-center bg-primary rounded-sm  m-5 shadow-xl opacity-80">
+      <div className=" flex flex-col w-6/12 items-center bg-primary rounded-xl  m-5 shadow-xl opacity-90">
         <ToastContainer />
         {newobservation && newobservation.photo_url ? (
           <img
@@ -155,11 +155,11 @@ function NewObservation() {
 
             <div className="flex w-full items-center justify-evenly">
               <button
-                className="my-6 w-40 self-center bg-secondary cursor-pointer text-white font-semibold py-1 rounded"
+                className="my-6 w-40 self-center bg-secondary cursor-pointer text-black font-extrabold py-1 rounded hover:scale-125 hover:text-third shadow-lg"
                 type="submit"
                 onClick={(e) => submit(e)}
               >
-                Valider
+                Ajouter
               </button>
             </div>
           </form>

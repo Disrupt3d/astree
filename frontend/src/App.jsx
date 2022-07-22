@@ -19,7 +19,7 @@ import UpdateObservation from "./pages/UpdateObservation";
 function App() {
   const { user } = useContext(ExportContextUser.UserContext);
   return (
-    <div className="App">
+    <div className="App ">
       <Router>
         <Routes>
           <Route path="/" element={<ConnexionLayout />}>
