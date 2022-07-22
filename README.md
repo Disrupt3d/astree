@@ -1,34 +1,53 @@
-## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+<h1 align="center">Astrée, Rencontres Astrales</h1>
 
-## Setup & Use
 
-### Project Initialization
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm run setup`
-- _NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
+<p align="center">
+  <img  src="https://i.ibb.co/qs7MNqN/Astree-logo.png">
+</p>
 
-### Available Commands
 
-- `setup` : Initialization of frontend and backend, as well as all toolings
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools, and refuses unclean code (will be executed on every _commit_)
-- `fix` : Fixes linter errors (run it if `lint` growls on your code !)
 
-## FAQ
 
-### Tools
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
-- _Nodemon_ : Allows to restart the server everytime a .js file is udated
+
+
+
+
+Astrée , rencontres astrales have been designed for  the needs of the  checkpoint 4 (the last)  during our remote trainee session at the Wild Code School.
+it has been fully designed, produced, coded by my own using React, Node, Express  Tailwind, Bulma. It contains a proper back-end , with databases , designed with Workbench and MYSQL.
+The website is responsive only for the desktop and tablet breakpoints , due to a lack of time.
+I will update it  and keep working on it on the coming months.
+
+
+
+
+
+
+
+
+
+
+
+<h1 align="center">Wireframe</h1>
+
+
+It has been done with  the help of Uizard ( an app really similar to Figma) but for this project i decided to change and  get used with another one.
+You can access the wireframe and play the prototype with the following link : https://app.uizard.io/p/7d904e96
+
+
+<h1 align="center">Trello- User stories and  development planification</h1>
+
+This  file is not shared and updated yet .
+
+
+<h1 align="center">To go further</h1>
+
+Feel free to contact  me via GitHub or my linkedIn profile if  you have some  questions .
+You can  access my online portfolio,  visiting the following link :
+https://alexandre-genin.netlify.app/
+
+You can  access my LinkedIn profile,  visiting the following link :
+www.linkedin.com/in/alexandre-genin
+
