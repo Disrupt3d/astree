@@ -34,7 +34,18 @@ class ProfileController {
     profile.id = parseInt(req.params.id, 10);
 
     models.profile
-      .update(profile, profile.id)
+      .update(
+        {
+          pseudo: profile.pseudo,
+          city: profile.city,
+          telescope: profile.telescope,
+          camera: profile.camera,
+          biography: profile.biography,
+          image_url: profile.image_url,
+          image_alt: profile.image_alt,
+        },
+        profile.id
+      )
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);

@@ -65,11 +65,11 @@ function UpdateObservation() {
       <h2 className="m-5 flex justify-center items-center text-4xl text-secondary font-bold">
         Modifier votre Observation
       </h2>
-      <div className=" flex flex-col w-6/12 items-center bg-primary rounded-sm  m-5 shadow-xl">
+      <div className=" flex flex-col w-6/12 items-center bg-primary rounded-xl  m-5 shadow-xl">
         <ToastContainer />
         {observation && observation.photo_url ? (
           <img
-            className=" flex items-center justify-center m-5 w-3/4 rounded-sm "
+            className=" flex items-center justify-center mt-5 pt-5 w-3/4 rounded-sm "
             src={observation.photo_url}
             alt={observation.photo_alt}
           />

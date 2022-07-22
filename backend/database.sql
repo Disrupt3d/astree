@@ -34,7 +34,9 @@ INSERT INTO `user`(`user_id`, `email`, `hashedpassword`) VALUES
 (1,"genin.alexandre@live.fr", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
 (2,"kevin.lavigne@gmail.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
 (3,"scarlettjohannson@wonder.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
-(4,"randomuser@random.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ');
+(4,"randomuser@random.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
+(5,"erwan.mcgreggor@gmail.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ'),
+(6,"steven.gerrard@gmail.com", '$argon2id$v=19$m=65536,t=5,p=1$RghFSPxGNFoW2FyGliiPQw$a490HeN/yGiJDl1tWpJnaqZehOBXbyOzf43LB+lkzJQ');
 
 
 
@@ -68,7 +70,14 @@ INSERT INTO `profile` (`id`, `user_id`, `pseudo`, `city`, `telescope`, `camera`,
 (1, 1, 'Disrupt3d','Avignon', 'skywatcher 150/750','canon D720', "Amateur de astrophotographie et des étoiles, j'ai acquis mon premier télescope il y a 8 mois.", 'https://i.ibb.co/BcLNh2Q/AG-PROFIL-2.jpg', 'photo de profil'),
 (2, 2, '3vilAngel','Reims', 'Omegon N 150/750 EQ-3','CANON EOS 6D MARK II', "je m'apelle Kévin, j'ai  24 ans je vis dans la champagne et je fais de l'observation depuis  3 ans.", 'https://i.ibb.co/cXJmtNm/ian-dooley-d1-UPki-Fd04-A-unsplash.jpg', 'photo de profil'),
 (3, 3, 'Beautiful_Scarlet','Saint-Tropez', 'Dobson Orion N 356/1650','SONY Alpha a6000', "Hi there, i'am a begeener in astropics,and i just wanna  find some new content for my instagram account.Would love to  participe events and watch the sky with you guys!", 'https://i.ibb.co/z20mXPg/scarlett-johannson.jpg', 'photo de profil'),
-(4, 4, null,'Paris', 'Celestron PowerSeeker 127 EQ','Panasonic LUMIX G7', "j'ai attéri là un peu par hasard", null, null);
+(4, 4, null,'Paris', 'Celestron PowerSeeker 127 EQ','Panasonic LUMIX G7', "j'ai attéri là un peu par hasard", null, null),
+(5, 5, 'Erwan_MC','Tatoine', 'SEBEN 14/1000 EQ3','Nikon D3500', "Hi there", 'https://i.ibb.co/W5Q2pKd/ewan-mc.jpg', 'photo de profil'),
+(6, 6, 'SG8_YNWA','Liverpool', 'Omegon Dobson N 203/1200 DOB','Pentax K-70', "Hi there", 'https://i.ibb.co/zxNvCsr/steven-gerrard.jpg', 'photo de profil');
+
+
+
+
+
 
 -- -----------------------------------------------------
 -- Table `astree_db`.`photo`
@@ -101,7 +110,9 @@ INSERT INTO `photo` (`photo_id`, `title`, `date`, `dpt_location`, `description`,
 (3, "Nébuleuse M45",'07/06/22', '13',"Le set-up:lunette skywatcher 80ed/correcteur-réducteur 0.85/ asi 2600 mm/ RAF/DO avec asi 290 mini/AZEQ6/ pilotage via Asiair pro.Acquisitions: Luminance: 80*3min à gain 0. RVB: 1h par filtre avec sub de 3 min à gain 0 DOF Traitement Pixinsight", 'https://i.ibb.co/nBXNpxW/M45.jpg', "la nebuleuse M45", 'Noves', 2),
 (4, "Nébuleuse du Sorcier NGC7380",'19/07/22', '60'," le sorcier en 6 heures sur deux soirs.eq5 eqstar SW130PDS ASI533MC + altair tri-bande, autoguidage PHD2 sur lunette guidée. poses unitaire de 180 secondes, sur 6 heures au total.traitement Siril, starnet, PS, LR", 'https://i.ibb.co/phh3Sk5/NGC7380-sorcier.jpg', "la nebuleuse du sorcier", 'Lille', 2),
 (5, "Lune",'20/07/22', '30'," Photo prise avec Celestron C8, réducteur f6.3, asi294mc pro. 197 images stackées. ", 'https://i.ibb.co/Tqbs3Nx/lune.jpg',"la lune", 'Noves', 1),
-(6, "M3 et comète Léonard",'03/04/22', '34',"Lunette Evostar 100 ED, Monture NEQ5 goto,réducteur 0,85,Canon 550 D non défilltré.8 poses de 40 secondes chacune,iso 800 traitement SIRIL ,GIMP.", 'https://i.ibb.co/JygJZTj/M3-leonard.jpg', "la M3 rencontre une comète", 'Lattes', 3);
+(6, "M3 et comète Léonard",'03/04/22', '34',"Lunette Evostar 100 ED, Monture NEQ5 goto,réducteur 0,85,Canon 550 D non défilltré.8 poses de 40 secondes chacune,iso 800 traitement SIRIL ,GIMP.", 'https://i.ibb.co/JygJZTj/M3-leonard.jpg', "la M3 rencontre une comète", 'Lattes', 3),
+(7, "supernova W63",'17/05/22',"77","Il s'agit donc du rémanent de Supernova SNR G82-2+5.3 (W63), en 47h20 de poses du 9 juin au 8 juillet 2022 à Amiens (France, Bortle 7).
+L'objet étant une coquille d'oxygène ionisé sur fond d'une nébuleuse à émission composé majoritairement d'hydrogène ionisé, j'ai opté pour une composition HOO plutôt que SHO sur ce rémanent très faible et relativement peu imagé.", 'https://i.ibb.co/kM7vHPS/supernova.jpg',' rémanent de Supernova','Liverpool',6 );
 
 
 -- -----------------------------------------------------

@@ -12,7 +12,7 @@ class observationManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `select * from  ${this.table} INNER JOIN profile on profile_id =id LIMIT 10`
+      `select * from  ${this.table} INNER JOIN profile on profile_id =id ORDER BY photo_id DESC LIMIT 10 `
     );
   }
 
