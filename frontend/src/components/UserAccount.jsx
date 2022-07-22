@@ -6,12 +6,12 @@ function UserAccount() {
   const { user } = useContext(ExportContextUser.UserContext);
   return (
     <div className="flex items-center ">
-      {user && user[0].pseudo ? (
+      {user[0] && user[0].pseudo ? (
         <p className="mr-5 text-secondary font-semibold">{user[0].pseudo}</p>
       ) : (
         <p className="mr-5 text-secondary font-semibold">Profil</p>
       )}
-      {user && user[0].image_url ? (
+      {user[0] && user[0].image_url ? (
         <div
           id="cardprofilepicture"
           className="bg-secondary  rounded-full"

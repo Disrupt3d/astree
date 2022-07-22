@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import Logo from "../assets/Astree-logo.png";
 import UserAccount from "./UserAccount";
+import ExportContextUser from "../contexts/UserContext";
 
 function Navbar() {
+  const { user } = useContext(ExportContextUser.UserContext);
   return (
     <div className="">
       <nav className="navbar  ">
@@ -25,7 +27,7 @@ function Navbar() {
           <Link to="/evenements" className="nav-items">
             Evenements
           </Link>
-          <Link to="/profil" className="nav-items">
+          <Link to={`/profile/${user.id}`} className="nav-items">
             <UserAccount />
           </Link>
         </div>

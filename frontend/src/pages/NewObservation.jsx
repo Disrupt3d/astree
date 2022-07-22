@@ -29,7 +29,7 @@ function NewObservation() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/observation/`, {
         ...newobservation,
-        profile_id: user[0].user_id,
+        profile_id: user.id,
       })
       .then((res) => {
         setNewobservation(res.data);
@@ -40,6 +40,7 @@ function NewObservation() {
       })
       .catch(() => notifyError("Une erreur est survenue, veuillez réessayer"));
   };
+
   return (
     <div id="newobservation" className="flex flex-col items-center   ">
       <h2 className="m-5 flex justify-center items-center text-4xl text-secondary font-bold">
