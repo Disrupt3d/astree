@@ -37,7 +37,7 @@ function App() {
             <Route path="/observations" element={<Observations />} />
             <Route path="/observations/ajouter" element={<NewObservation />} />
             <Route path="/evenements" element={<Events />} />
-            <Route path="/profil" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route
               path="/observations/modifier/:id"
               element={<UpdateObservation />}

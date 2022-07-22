@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -12,12 +13,11 @@ import ExportContextUser from "../contexts/UserContext";
 function Signin() {
   const navigate = useNavigate();
   const { handleUser } = useContext(ExportContextUser.UserContext);
-  const [createPseudo, setPseudo] = useState();
   const [createEmail, setEmail] = useState();
   const [createPassword, setPassword] = useState();
 
   const onSubmit = () => {
-    if (!createPseudo || !createEmail || !createPassword) {
+    if (!createEmail || !createPassword) {
       notifyError("Des données sont manquantes");
       return;
     }
