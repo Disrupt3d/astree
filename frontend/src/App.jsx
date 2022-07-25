@@ -14,7 +14,7 @@ import Login from "./components/Login";
 import ProtectedRoute from "./layouts/ProtectedRoute";
 import UserLoggedLayout from "./layouts/UserLoggedLayout";
 import UpdateObservation from "./pages/UpdateObservation";
-// import "bulma/css/bulma.min.css";
+import OtherUsersProfiles from "./pages/OtherUsersProfiles";
 
 function App() {
   const { user } = useContext(ExportContextUser.UserContext);
@@ -38,6 +38,10 @@ function App() {
             <Route path="/observations/ajouter" element={<NewObservation />} />
             <Route path="/evenements" element={<Events />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route
+              path="/profile/consulter/:id"
+              element={<OtherUsersProfiles />}
+            />
             <Route
               path="/observations/modifier/:id"
               element={<UpdateObservation />}

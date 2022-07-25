@@ -29,11 +29,12 @@ router.get("/user/:id", UserController.read);
 // profile
 
 router.get("/profile/", ProfileController.browse);
+router.get("/profile/consulter/:id", ProfileController.read);
 router.get("/profile/:id", ProfileController.read);
 router.put("/profile/:id", ProfileController.edit);
 
 // observations
-
+router.get("/observation/count/:id", ObservationController.count);
 // Retrieve all observations
 router.get("/observation", ObservationController.browse);
 // show a specific observation

@@ -26,7 +26,7 @@ function Login() {
       )
       .then((res) => {
         handleUser(res.data);
-        notifySuccess("Connexion réussie, redirection en cours");
+        notifySuccess("Connexion réussie");
         setTimeout(() => {
           navigate("/observations");
         }, 1500);
@@ -70,7 +70,7 @@ function Login() {
                 />
               </label>
               <input
-                className="my-6 w-2/3 self-center bg-secondary hover:bg-yellow-200 cursor-pointer text-white font-semibold py-1 rounded"
+                className="my-6 w-2/3 self-center bg-secondary cursor-pointer text-white font-semibold py-1 rounded-lg hover:scale-110 hover:text-primary shadow-lg"
                 type="button"
                 value="Se connecter"
                 onClick={onSubmit}

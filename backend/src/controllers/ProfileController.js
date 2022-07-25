@@ -37,9 +37,12 @@ class ProfileController {
       .update(
         {
           pseudo: profile.pseudo,
+          sexe: profile.sexe,
+          age: profile.age,
           city: profile.city,
           telescope: profile.telescope,
           camera: profile.camera,
+          monture: profile.monture,
           biography: profile.biography,
           image_url: profile.image_url,
           image_alt: profile.image_alt,
