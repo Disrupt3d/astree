@@ -49,9 +49,12 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`profile` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `pseudo` VARCHAR(45) NULL,
+  `sexe` VARCHAR(45) NULL,
+  `age` INT NULL,
   `city` VARCHAR(45) NULL,
   `telescope` VARCHAR(45) NULL,
   `camera` VARCHAR(45) NULL,
+  `monture` VARCHAR(100) NULL,
   `biography` MEDIUMTEXT NULL,
   `image_url` VARCHAR(200) NULL,
   `image_alt` VARCHAR(45) NULL,
@@ -66,13 +69,13 @@ CREATE TABLE IF NOT EXISTS `astree_db`.`profile` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `profile` (`id`, `user_id`, `pseudo`, `city`, `telescope`, `camera`, `biography`, `image_url`, `image_alt` ) VALUES
-(1, 1, 'Disrupt3d','Avignon', 'skywatcher 150/750','canon D720', "Amateur de astrophotographie et des étoiles, j'ai acquis mon premier télescope il y a 8 mois.", 'https://i.ibb.co/BcLNh2Q/AG-PROFIL-2.jpg', 'photo de profil'),
-(2, 2, '3vilAngel','Reims', 'Omegon N 150/750 EQ-3','CANON EOS 6D MARK II', "je m'apelle Kévin, j'ai  24 ans je vis dans la champagne et je fais de l'observation depuis  3 ans.", 'https://i.ibb.co/cXJmtNm/ian-dooley-d1-UPki-Fd04-A-unsplash.jpg', 'photo de profil'),
-(3, 3, 'Beautiful_Scarlet','Saint-Tropez', 'Dobson Orion N 356/1650','SONY Alpha a6000', "Hi there, i'am a begeener in astropics,and i just wanna  find some new content for my instagram account.Would love to  participe events and watch the sky with you guys!", 'https://i.ibb.co/z20mXPg/scarlett-johannson.jpg', 'photo de profil'),
-(4, 4, null,'Paris', 'Celestron PowerSeeker 127 EQ','Panasonic LUMIX G7', "j'ai attéri là un peu par hasard", null, null),
-(5, 5, 'Erwan_MC','Tatoine', 'SEBEN 14/1000 EQ3','Nikon D3500', "Hi there", 'https://i.ibb.co/W5Q2pKd/ewan-mc.jpg', 'photo de profil'),
-(6, 6, 'SG8_YNWA','Liverpool', 'Omegon Dobson N 203/1200 DOB','Pentax K-70', "Hi there", 'https://i.ibb.co/zxNvCsr/steven-gerrard.jpg', 'photo de profil');
+INSERT INTO `profile` (`id`, `user_id`, `pseudo`, `sexe`, `age`, `city`, `telescope`, `camera`,`monture`, `biography`, `image_url`, `image_alt` ) VALUES
+(1, 1, 'Disrupt3d','Homme', 32,'Avignon', 'skywatcher 150/750','canon D720', NULL, "Amateur de astrophotographie et des étoiles, j'ai acquis mon premier télescope il y a 8 mois.", 'https://i.ibb.co/BcLNh2Q/AG-PROFIL-2.jpg', 'photo de profil'),
+(2, 2, '3vilAngel','Homme', 24,'Hautevesnes', 'Omegon N 150/750 EQ-3','CANON EOS 6D MARK II', NULL, "je m'apelle Kévin, je suis un otp BRAND qui int sans vergogne mon ADC", 'https://i.ibb.co/H2vkkqc/brandloadscreen-7-skins-brand-skin07.jpg', 'photo de profil'),
+(3, 3, 'Beautiful_Scarlet','Femme',41,'Saint-Tropez', 'Dobson Orion N 356/1650','SONY Alpha a6000', NULL, "Hi there, i'am a begeener in astropics,and i just wanna  find some new content for my instagram account.Would love to  participe events and watch the sky with you guys!", 'https://i.ibb.co/z20mXPg/scarlett-johannson.jpg', 'photo de profil'),
+(4, 4, null,'Homme', NULL, 'Paris', 'Celestron PowerSeeker 127 EQ','Panasonic LUMIX G7', NULL, "j'ai attéri là un peu par hasard", null, null),
+(5, 5, 'Ewan_MC','Homme',52,'Tatoine', 'SEBEN 14/1000 EQ3','Nikon D3500', NULL, "Hi there", 'https://i.ibb.co/W5Q2pKd/ewan-mc.jpg', 'photo de profil'),
+(6, 6, 'SG8_YNWA','Homme',37,'Liverpool', 'Omegon Dobson N 203/1200 DOB','Pentax K-70', 'Skywatcher EQ3-2', "Hi there, i ma stevie from Liverpool.i used to be a legend at Liverpool FC , where i played for almost 20 years and made history. i retired at  34 and begun a new career as a football coach . i had succes taking charge of Glasgow Rangers, then  i  accepted a move to Aston villa which signed my return in premier league . I am currently waiting my turn to coach liverpool , but  Klopp seems to be not decided yet . its a bit long and boring , so  i started to watch the sky and  looking for  amazing scenes .", 'https://i.ibb.co/zxNvCsr/steven-gerrard.jpg', 'photo de profil');
 
 
 
@@ -112,7 +115,11 @@ INSERT INTO `photo` (`photo_id`, `title`, `date`, `dpt_location`, `description`,
 (5, "Lune",'20/07/22', '30'," Photo prise avec Celestron C8, réducteur f6.3, asi294mc pro. 197 images stackées. ", 'https://i.ibb.co/Tqbs3Nx/lune.jpg',"la lune", 'Noves', 1),
 (6, "M3 et comète Léonard",'03/04/22', '34',"Lunette Evostar 100 ED, Monture NEQ5 goto,réducteur 0,85,Canon 550 D non défilltré.8 poses de 40 secondes chacune,iso 800 traitement SIRIL ,GIMP.", 'https://i.ibb.co/JygJZTj/M3-leonard.jpg', "la M3 rencontre une comète", 'Lattes', 3),
 (7, "supernova W63",'17/05/22',"77","Il s'agit donc du rémanent de Supernova SNR G82-2+5.3 (W63), en 47h20 de poses du 9 juin au 8 juillet 2022 à Amiens (France, Bortle 7).
-L'objet étant une coquille d'oxygène ionisé sur fond d'une nébuleuse à émission composé majoritairement d'hydrogène ionisé, j'ai opté pour une composition HOO plutôt que SHO sur ce rémanent très faible et relativement peu imagé.", 'https://i.ibb.co/kM7vHPS/supernova.jpg',' rémanent de Supernova','Liverpool',6 );
+L'objet étant une coquille d'oxygène ionisé sur fond d'une nébuleuse à émission composé majoritairement d'hydrogène ionisé, j'ai opté pour une composition HOO plutôt que SHO sur ce rémanent très faible et relativement peu imagé.", 'https://i.ibb.co/kM7vHPS/supernova.jpg',' rémanent de Supernova','Liverpool',6 ),
+(8, "M106",'12/02/22',"34","ça faisait longtemps que je n'avais pas posté, suite à une période plus active en nightscape. Mais finalement ça fait du bien de revenir aux fondamentaux ! Voici une autre image qui date du mois de février peu après que nous aillons upgradé le setup avec Killian.
+Dans cette image il resté du Bf à régler donc les étoiles tire un peu.Par contre on est vraiment dans l'exemple parfait d'un échantillonnage sympa avec du champ et de la résolution, c'est à dire que M106 est petite dans le champ mais la full permet de zoomer dessus en aillant des détails intéressants pour une lulu de 100mm.
+Nous avion fait 5h de Ha mais je ne les ai pas intégrées, je trouvais que ça manquait encore de jus du coup on reposera surement plus tard dessus pour ajouter du HA.Place à l'image et à vos critiques et maintenant place aux Nuits du Causse Noir ! ;) 
+420x120s en L, 96x120s en R, 101x120s en V, 96x120s en B.La full à 100% (26Millions de pixels )", 'https://i.ibb.co/YRG9xF7/Crop-thumb-jpg-257d56dc5b8127a655fab6cbc5a71c0d.jpg',' crop de M106','Argelliers',5 );
 
 
 -- -----------------------------------------------------

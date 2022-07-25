@@ -32,6 +32,7 @@ function Profile() {
 
   const submit = (e) => {
     e.preventDefault();
+    console.log(profile);
     axios
       .put(`${import.meta.env.VITE_BACKEND_URL}/profile/${id}`, profile)
       .then((res) => {
@@ -47,11 +48,11 @@ function Profile() {
   return (
     <div className=" flex flex-col items-center " id="profilepage">
       <ToastContainer />
-      <div className="flex flex-col items-center justify-center m-10 bg-primary shadow-xl opacity-90 rounded-3xl ">
-        <div className="bg-primary flex items-center m-5  ">
-          <div className=" flex  flex-col items-center justify-center w-full">
+      <div className="flex flex-col items-center justify-center m-10 mb-40 pt-10 pb-10 bg-primary shadow-xl opacity-90 rounded-3xl ">
+        <div className="bg-primary flex ">
+          <div className=" flex  flex-col items-center w-1/2 h-full">
             {profile && profile.pseudo ? (
-              <h2 className=" m-auto text-4xl text-secondary  text-center font-bold">
+              <h2 className=" flex justify-between text-4xl text-secondary  text-center font-bold">
                 Bienvenue, {profile.pseudo}
               </h2>
             ) : (
@@ -61,26 +62,89 @@ function Profile() {
             )}
             {profile && profile.image_url ? (
               <img
-                className=" flex items-center justify-center m-5 w-11/12 rounded-lg"
+                className=" flex items-center justify-center m-5 w-1/3 rounded-lg"
                 src={profile.image_url}
                 alt={profile.image_alt}
               />
             ) : (
               ""
             )}
+            <div className="flex flex-col w-1/2 items-center justify-between pb-3">
+              <label className=" flex items-center justify-around text-third font-extrabold  p-3">
+                Lien HTML de votre photo:
+              </label>
+              <p className=" text-third pb-5 text-center text-sm ">
+                Afin de pouvoir changer la photo, veuillez au préalable
+                l&apos;uploader sur un hébergeur d&apos;image comme{" "}
+                <a
+                  className="text-secondary font-extrabold"
+                  href="https://fr.imgbb.com/"
+                >
+                  ImgBB
+                </a>{" "}
+                et copiez-collez l&apos;url html complète ci-dessous:
+              </p>
+              <input
+                className=" font-bold rounded-sm w-full pl-2 pr-2"
+                type="html"
+                name="image_url"
+                onChange={(e) => handleChange(e)}
+                defaultValue={profile && profile.image_url}
+              />
+            </div>
           </div>
 
-          <div className="ml-5 mr-5 ">
-            <h4 className=" text-lg text-third text-center p-3 mb-5">
-              Vous pouvez effectuer sur cette page, toutes les modifications à
-              l&apos;exception de votre pseudo et de votre addresse Email.
+          <div className=" w-1/2 ml-5 mr-5 ">
+            <h4 className=" text-md text-third text-center p-3 mb-5">
+              Vous pouvez effectuer sur cette page, toutes les modifications
+              souhaitées, à l&apos;exception de votre addresse Email.
             </h4>
             <form
               id="updateform"
               className=" flex  flex-col items-center justify-center  "
             >
               <div className="flex w-full items-center justify-between pb-3">
-                <label className="  items-center justify-around text-third font-extrabold  p-3 w-1/4">
+                <label className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4">
+                  Pseudo:
+                </label>
+                <input
+                  className=" text-center shadow-xl w-3/4 "
+                  type="text"
+                  name="pseudo"
+                  onChange={(e) => handleChange(e)}
+                  defaultValue={profile && profile.pseudo}
+                />
+              </div>
+              <div className="flex w-full items-center justify-between pb-3">
+                <label className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4">
+                  Sexe:
+                </label>
+                <select
+                  className=" text-center shadow-xl w-3/4 "
+                  type="text"
+                  name="sexe"
+                  onChange={(e) => handleChange(e)}
+                  value={profile && profile.sexe}
+                >
+                  <option value="">choisir un sexe</option>
+                  <option value="Homme">Homme</option>
+                  <option value="Femme">Femme</option>
+                </select>
+              </div>
+              <div className="flex w-full items-center justify-between pb-3">
+                <label className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4">
+                  Age:
+                </label>
+                <input
+                  className=" text-center shadow-xl w-3/4 "
+                  type="text"
+                  name="age"
+                  onChange={(e) => handleChange(e)}
+                  defaultValue={profile && profile.age}
+                />
+              </div>
+              <div className="flex w-full items-center justify-between pb-3">
+                <label className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4">
                   Ville:
                 </label>
                 <input
@@ -92,11 +156,11 @@ function Profile() {
                 />
               </div>
               <div className="flex w-full items-center justify-between pb-3">
-                <label className="  items-center justify-around text-third font-extrabold  p-3 w-2/4">
+                <label className="  items-center justify-around text-third font-extrabold  pt-3 w-2/4">
                   Mon appareil de capture:
                 </label>
                 <input
-                  className=" text-center shadow-xl w-2/4 "
+                  className=" text-center shadow-xl w-3/4 "
                   type="text"
                   name="camera"
                   onChange={(e) => handleChange(e)}
@@ -104,11 +168,14 @@ function Profile() {
                 />
               </div>
               <div className="flex w-full items-center justify-between pb-3">
-                <label className="  items-center justify-around text-third font-extrabold  p-3 w-2/4 ">
+                <label
+                  className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4 "
+                  htmlFor="telescope"
+                >
                   Mon télescope:
                 </label>
                 <input
-                  className=" text-center shadow-xl w-2/4"
+                  className=" text-center shadow-xl w-3/4"
                   type="text"
                   name="telescope"
                   onChange={(e) => handleChange(e)}
@@ -116,7 +183,25 @@ function Profile() {
                 />
               </div>
               <div className="flex w-full items-center justify-between pb-3">
-                <label className=" flex items-center justify-around text-third font-extrabold  p-3 w-1/4 ">
+                <label
+                  className="  items-center justify-around text-third font-extrabold  pt-3 w-1/4 "
+                  htmlFor="monture"
+                >
+                  Ma Monture:
+                </label>
+                <input
+                  className=" text-center shadow-xl w-3/4"
+                  type="text"
+                  name="monture"
+                  onChange={(e) => handleChange(e)}
+                  defaultValue={profile && profile.monture}
+                />
+              </div>
+              <div className="flex w-full items-center justify-between pb-3">
+                <label
+                  className=" flex items-center justify-between text-third font-extrabold   w-1/4 "
+                  htmlFor="biography"
+                >
                   Biographie:
                 </label>
                 <Form.Control
@@ -128,33 +213,10 @@ function Profile() {
                   defaultValue={profile && profile.biography}
                 />
               </div>
-              <div className="flex flex-col w-full items-center justify-between pb-3">
-                <label className=" flex items-center justify-around text-third font-extrabold  p-3">
-                  Lien HTML de votre photo:
-                </label>
-                <p className=" text-third pb-5 text-center ">
-                  Afin de pouvoir changer la photo, veuillez au préalable
-                  l&apos;uploader sur un hébergeur d&apos;image comme{" "}
-                  <a
-                    className="text-secondary font-extrabold"
-                    href="https://fr.imgbb.com/"
-                  >
-                    ImgBB
-                  </a>{" "}
-                  et copiez-collez l&apos;url html complète ci-dessous:
-                </p>
-                <input
-                  className="w-full bg-secondary"
-                  type="html"
-                  name="image_url"
-                  onChange={(e) => handleChange(e)}
-                  defaultValue={profile && profile.image_url}
-                />
-              </div>
 
               <div className="flex w-full items-center justify-evenly pb-5">
                 <button
-                  className="my-6 w-40 self-center bg-secondary cursor-pointer text-white font-semibold py-1 rounded hover:scale-125 hover:text-primary shadow-lg"
+                  className="my-6 w-40 self-center bg-secondary cursor-pointer text-white font-semibold py-1 rounded hover:scale-110 hover:text-primary shadow-lg"
                   type="submit"
                   onClick={(e) => {
                     submit(e);

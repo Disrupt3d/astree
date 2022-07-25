@@ -11,7 +11,7 @@ function Navbar() {
     <div className="">
       <nav className="navbar  ">
         <div className="logo-wrapper">
-          <img src={Logo} alt="Logo" width="150px" />
+          <img src={Logo} alt="Logo" width="120px" />
         </div>
 
         <div

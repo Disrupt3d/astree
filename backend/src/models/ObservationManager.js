@@ -10,6 +10,13 @@ class observationManager extends AbstractManager {
     );
   }
 
+  countByUser(id) {
+    return this.connection.query(
+      `SELECT COUNT(*) as numberofpost FROM ${this.table} WHERE profile_id = ?`,
+      [id]
+    );
+  }
+
   findAll() {
     return this.connection.query(
       `select * from  ${this.table} INNER JOIN profile on profile_id =id ORDER BY photo_id DESC LIMIT 10 `

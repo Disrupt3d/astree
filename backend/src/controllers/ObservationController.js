@@ -13,6 +13,19 @@ class ObservationController {
       });
   };
 
+  static count = (req, res) => {
+    models.photo
+      .countByUser(req.params.id)
+      .then(([rows]) => {
+        console.log(res);
+        res.send(rows);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static read = (req, res) => {
     models.photo
       .find(req.params.id)

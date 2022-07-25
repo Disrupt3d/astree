@@ -33,7 +33,9 @@ function NewObservation() {
       })
       .then((res) => {
         setNewobservation(res.data);
-        notifySuccess("Votre post a bien été modifié, redirection en cours");
+        notifySuccess(
+          "Votre post a bien été créé, retour vers l'ensemble des posts"
+        );
         setTimeout(() => {
           navigate("/observations");
         }, 1500);

@@ -2,7 +2,7 @@
 /* eslint-disable prefer-destructuring */
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { Form } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
@@ -43,23 +43,6 @@ function UpdateObservation() {
       .catch(() => notifyError("Une erreur est survenue, veuillez réessayer"));
   };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    axios
-      .delete(
-        `${import.meta.env.VITE_BACKEND_URL}/observation/${id}`,
-        observation
-      )
-      .then((res) => {
-        setObservation(res.data);
-        notifySuccess("Votre post a bien été supprimé, redirection en cours");
-        setTimeout(() => {
-          navigate("/observations");
-        }, 1500);
-      })
-      .catch(() => notifyError("Supression impossible"));
-  };
-
   return (
     <div id="observations" className="flex flex-col items-center   ">
       <h2 className="m-5 flex justify-center items-center text-4xl text-secondary font-bold">
@@ -69,7 +52,7 @@ function UpdateObservation() {
         <ToastContainer />
         {observation && observation.photo_url ? (
           <img
-            className=" flex items-center justify-center mt-5 pt-5 w-3/4 rounded-sm "
+            className=" flex items-center justify-center mt-5   rounded-sm "
             src={observation.photo_url}
             alt={observation.photo_alt}
           />
@@ -174,20 +157,22 @@ function UpdateObservation() {
 
             <div className="flex w-full items-center justify-evenly">
               <button
-                className="my-6 w-40 self-center bg-secondary cursor-pointer text-white font-semibold py-1 rounded"
+                id="button"
+                className="my-6 w-40 self-center bg-secondary cursor-pointer text-black font-bold py-1 rounded"
                 type="submit"
                 onClick={(e) => submit(e)}
               >
                 Valider
               </button>
-              <button
-                id="deletebutton"
-                className="  my-6 w-40 self-center  cursor-pointer text-white font-semibold py-1 rounded"
-                type="submit"
-                onClick={(e) => handleDelete(e)}
-              >
-                Supprimer
-              </button>
+              <Link to="/observations">
+                <button
+                  id="button"
+                  className="  my-6 w-40 self-center  cursor-pointer py-1 rounded"
+                  type="submit"
+                >
+                  Annuler
+                </button>
+              </Link>
             </div>
           </form>
         </div>
