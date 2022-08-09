@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -10,7 +11,7 @@ function ConnexionSwitch({ isMember, align, linkto }) {
       <NavLink to={linkto}>
         <button
           type="button"
-          className="text-sm px-2 font-bold text-secondary underline hover:text-green-400"
+          className="text-sm px-2 font-bold text-secondary underline hover:text-third"
         >
           {isMember ? "Se connecter" : "Créer un compte"}
         </button>

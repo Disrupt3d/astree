@@ -6,7 +6,10 @@ import LoginLeft from "../components/LoginLeft";
 
 function ConnexionLayout() {
   return (
-    <div id="loginpage" className="flex w-full justify-between items-center  ">
+    <div
+      id="loginpage"
+      className="flex w-screen h-screen justify-between items-center  "
+    >
       <LoginLeft />
       <Outlet />
     </div>

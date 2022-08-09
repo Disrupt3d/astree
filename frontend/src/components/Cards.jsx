@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 import Modal from "./Modal";
+import nopic from "../assets/no_pic_profile.png";
 
 import ExportContextUser from "../contexts/UserContext";
 
@@ -12,20 +14,23 @@ function Cards({ el, setObservation, observation }) {
     setMore(!more);
   };
   return (
-    <div
+    <Card
+      style={{ width: "35rem" }}
       id="observationcards"
       key={el.title}
-      className="card w-2/5 m-3 mb-5 mt-5 rounded-none shadow-xl rounded-t-xl "
+      className="card  m-3 mb-5 rounded-2xl shadow-lg shadow-primary  "
     >
-      <div className="card-header-title is-centered text-center text-3xl  bg-primary  shadow-xl text-secondary  rounded-t-lg">
-        {el.title}
-        {user.id === el.profile_id ? (
-          <button type="button" id="more" onClick={() => setMore(!more)}>
-            ...
-          </button>
-        ) : (
-          ""
-        )}
+      <div className="card-header-title is-centered flex rounded-t-xl text-3xl font-bold text-center py-3  bg-primary  shadow-xl text-secondary ">
+        <div className="flex w-11/12 justify-center">{el.title}</div>
+        <div className="flex w-1/12 justify-center">
+          {user.id === el.user_id ? (
+            <button type="button" id="more" onClick={() => setMore(!more)}>
+              ...
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
         {more === true && (
           <Modal
             el={el}
@@ -45,48 +50,77 @@ function Cards({ el, setObservation, observation }) {
         />
       </div>
       <div className="card-content w-full p-0   ">
-        <div className="media items-center justify-center mt-3 mb-2 rounded-md pl-4 pr-4">
-          <Link to={`/profile/consulter/${el.profile_id}`}>
-            <div
-              id="cardprofilepicture"
-              className="media-left  bg-secondary  rounded-full hover:scale-125 cursor-pointer "
-              style={{
-                backgroundImage: `url(${el.image_url})`,
-              }}
-            />
+        <div className="media flex items-center justify-between p-2 ">
+          <Link to={`/profile/consulter/${el.user_id}`}>
+            {el && el.image_url ? (
+              <div
+                id="cardprofilepicture"
+                className="bg-secondary hover:scale-125  rounded-full "
+                style={{
+                  backgroundImage: `url(${el.image_url})`,
+                }}
+              />
+            ) : (
+              <div
+                id="cardprofilepicture"
+                className="media-left  bg-secondary  rounded-full"
+                style={{
+                  backgroundImage: `url(${nopic})`,
+                }}
+              />
+            )}
           </Link>
+
           <div className="media-content">
-            <p className="title is-6 text-right">
+            <p className=" text-right">
               Posté par
-              <span className="  p-2 text-bold text-secondary">
+              <span className="  p-2 font-bold text-secondary">
                 {el.pseudo}
               </span>
             </p>
           </div>
         </div>
 
-        <p className=" text-sm font-bold pl-4 mt-5 mb-3 ">
+        <h3 className="  pl-4 mt-3 mb-3 text-primary border-b-2 border-secondary/25 ">
           Informations de capture
-        </p>
+        </h3>
         <div className="flex justify-between p-2 m-2 shadow-sm rounded-md ">
           <div className="content flex flex-col  text-sm text-center  ">
-            <p className="text-left ">Date: {el.date}</p>
-            <p className="text-left "> Caméra : {el.city_location}</p>
+            <div className="flex items-center mb-1">
+              <p className="text-left font-bold text-secondary ">Date:</p>
+              <span className="ml-1 font-regular">{el.date}</span>
+            </div>
+            <div className="flex items-center mb-1">
+              <p className="text-left font-bold text-secondary ">
+                Localisation:
+              </p>
+              <span className="ml-1 font-regular">{el.city_location}</span>
+            </div>
           </div>
 
           <div className="content flex flex-col  text-sm text-center ">
-            <p className="text-left "> Tube : {el.telescope}</p>
-            <p className="text-left "> Caméra : {el.camera}</p>
+            <div className="flex items-center mb-1">
+              <p className="text-left font-bold text-secondary ">Tube:</p>
+              <span className="ml-1 font-regular">{el.telescope}</span>
+            </div>
+            <div className="flex items-center mb-1">
+              <p className="text-left font-bold text-secondary ">
+                Appareil photo:
+              </p>
+              <span className="ml-1 font-regular">{el.camera}</span>
+            </div>
           </div>
         </div>
         <div className="content text-sm text-left text-ellipsis flex-wrap  rounded-md   mb-0 mt-5">
-          <p className="font-bold pl-4 mt-3 mb-3">Description du cliché</p>
-          <p className="pt-1 mt-1 mb-5 pl-3 pr-3 shadow-sm rounded-md">
+          <h3 className="  pl-4 mt-3 mb-3 text-primary border-b-2 border-secondary/25 ">
+            Description du cliché
+          </h3>
+          <p className="pt-1 pb-3 mt-1 mb-3 pl-3 pr-3 shadow-sm rounded-md h-full">
             {el.description}
           </p>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
