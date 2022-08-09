@@ -23,7 +23,7 @@ const verifyPassword = (password, hashedPassword) => {
 
 class AuthController {
   static signin = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, pseudo, password } = req.body;
 
     try {
       const hash = await hashPassword(password);
@@ -32,9 +32,13 @@ class AuthController {
         hashedpassword: hash,
       });
       req.body.id = insertUser[0].insertId;
-      await models.profile.insert(req.body, req.body.id);
+      await models.profile.insert(pseudo, req.body.id);
 
-      res.status(201).json({ email: req.body.email, id: req.body.id });
+      res.status(201).json({
+        email: req.body.email,
+        pseudo: req.body.pseudo,
+        id: req.body.id,
+      });
     } catch (err) {
       res.status(500).json({
         error: err.message,

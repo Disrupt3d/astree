@@ -18,7 +18,7 @@ class ProfileManager extends AbstractManager {
   insert(profile, id) {
     return this.connection.query(
       `INSERT INTO ${this.table} (pseudo, user_id) VALUES ( ?, ?)`,
-      [profile.pseudo, id]
+      [profile, id]
     );
   }
 

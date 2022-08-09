@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 function OtherUsersProfiles() {
@@ -15,15 +15,14 @@ function OtherUsersProfiles() {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/observation/count/${id}`)
       .then((res) => setCount(res.data));
-    console.log(count);
   }, []);
 
   return (
     <div
-      className="  h-full w-full justify-center items-center "
+      className=" flex flex-col h-full w-full justify-center items-center "
       id="profilepage"
     >
-      <div className="flex bg-primary shadow-xl opacity-90 items-center justify-around   m-10 rounded-3xl ">
+      <div className="flex bg-primary shadow-xl opacity-90 items-center rounded-3xl mx-5 ">
         <div className="flex flex-col w- h-full justify-around items-center  rounded-tl-3xl rounded-bl-3xl border-r-secondary">
           <h2 className=" flex justify-between text-4xl text-secondary  text-center font-bold">
             Profil de {profile && profile.pseudo}
@@ -92,6 +91,17 @@ function OtherUsersProfiles() {
             </p>
           </div>
         </div>
+      </div>
+      <div className="flex w-full items-center justify-center">
+        <Link to="/observations">
+          <button
+            id="button"
+            className=" my-6 w-fit self-center  cursor-pointer py-2 px-5 rounded"
+            type="submit"
+          >
+            retour
+          </button>
+        </Link>
       </div>
     </div>
   );

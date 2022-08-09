@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ExportContextUser from "../contexts/UserContext";
 
 function NewObservation() {
-  const { user } = useContext(ExportContextUser.UserContext);
+  const { profile } = useContext(ExportContextUser.UserContext);
   const [newobservation, setNewobservation] = useState("null");
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function NewObservation() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/observation/`, {
         ...newobservation,
-        profile_id: user.id,
+        profile_id: profile.id,
       })
       .then((res) => {
         setNewobservation(res.data);
@@ -44,7 +44,10 @@ function NewObservation() {
   };
 
   return (
-    <div id="newobservation" className="flex flex-col items-center   ">
+    <div
+      id="newobservation"
+      className="flex flex-col w-screen h-screen justify-center items-center  "
+    >
       <h2 className="m-5 flex justify-center items-center text-4xl text-secondary font-bold">
         Ajouter une Observation Astrale
       </h2>

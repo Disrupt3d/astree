@@ -7,6 +7,7 @@ const signinSchema = (req, res, next) => {
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "fr"] },
     }),
+    pseudo: Joi.string().min(3).max(25).required(),
 
     password: Joi.string().min(8).max(25).required(),
   }).validate(req.body, { abortEarly: false });

@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
-
-import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+import { MdDeleteForever } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 import { notifySuccess, notifyError } from "../services/Toastify";
 import "react-toastify/dist/ReactToastify.css";
-import trash from "../assets/trash.png";
-import edit from "../assets/editing.png";
 
 function Modal({ el, handleMore }) {
   const handleDelete = () => {
@@ -22,15 +20,23 @@ function Modal({ el, handleMore }) {
   };
   return (
     <div
-      className="w-32 h-32 bg-primary  flex items-center justify-around rounded-lg"
+      className="  bg-primary  flex flex-col w-28 flex-wrap items-center justify-evenly rounded-md shadow-md"
       id="modal"
     >
-      <button type="button" onClick={() => handleDelete()}>
-        <img src={trash} alt="" />
+      <button
+        type="button"
+        onClick={() => handleDelete()}
+        className="w-[35px] flex"
+      >
+        <MdDeleteForever className=" hover:scale-125" id="delete" />
       </button>
       <Link to={`/observations/modifier/${el.photo_id}`}>
-        <button type="button">
-          <img src={edit} alt="" />
+        <button
+          type="button"
+          className="w-[30px] flex hover:scale-125"
+          id="update"
+        >
+          <FaEdit className="w-[27px]" />
         </button>
       </Link>
     </div>

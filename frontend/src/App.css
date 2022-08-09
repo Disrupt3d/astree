@@ -1,4 +1,3 @@
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,12 +18,12 @@
   font-family: "Quicksand", sans-serif;
 }
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 99vw;
+  height: 99vh;
 }
 
 :root {
-  --title-font: "Quicksand", sans-serif;
+  --title-font: "Montserrat";
   --title-size: 48px;
   --text-font: "Quicksand", sans-serif;
   --text-size: 18px;
@@ -41,6 +40,17 @@ h1 {
   font-weight: 700;
   font-size: 48px;
 }
+h2 {
+  font-family: var(--title-font);
+  font-weight: 700;
+  font-size: 32px;
+}
+h3 {
+  font-family: var(--title-font);
+  font-weight: 600;
+  font-size: 18px;
+}
+
 p {
   font-family: var(--text-font);
   font-weight: 400;
@@ -54,6 +64,7 @@ p {
 /* VARIABLES GLOBALES */
 
 /*NAVBAR */
+
 .navbar {
   background-color: var(--MainColor);
 }
@@ -82,18 +93,25 @@ p {
 }
 
 #cardprofilepicture {
+  display: flex;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 64px;
-  width: 64px;
+  height: 50px;
+  width: 50px;
 }
 #logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 64px;
-  width: 64px;
+}
+#logout img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #updateobservation {
@@ -128,44 +146,35 @@ p {
   background-repeat: no-repeat;
 }
 #observationcards {
-  background-color: #e5e5e5;
-  max-width: 500px;
+  cursor: pointer;
+  background-color: rgb(236, 242, 245);
 }
 
 #picture {
-  max-height: 350px;
+  max-height: 400px;
   min-height: 350px;
-  max-width: 500px;
 }
 #more {
+  margin-bottom: 0px !important;
   transform: rotate(90deg);
-  font-size: 32px;
-  margin: auto;
-  position: absolute;
-  right: 3px;
-  width: 20px;
-  height: 40px;
+  font-size: 2rem;
+  display: flex;
   background-color: transparent;
+}
+#more:hover {
+  color: white;
 }
 #more img {
   width: 30px;
 }
 #modal {
-  width: 100px;
-  height: 40px;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  right: 35px;
+  height: 60px;
+  position: flex;
 }
-#modal a {
-  padding-top: 7px;
-}
+
 #modal img {
-  margin-top: 20px;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
+  width: 20px;
+  height: 20px;
 }
 
 #modal img:hover {
@@ -184,6 +193,20 @@ p {
   font-weight: bold;
 }
 
+#signin-btn {
+  color: var(--MainColor);
+  font-weight: bold;
+}
+#signin-btn:hover {
+  transform: scale(1.05);
+}
+#delete:hover {
+  color: red;
+}
+#update:hover {
+  color: rgb(118, 197, 223);
+}
+
 /*RESPONSIVE */
 
 @media screen and (max-width: 1024px) {
@@ -191,12 +214,10 @@ p {
     flex-direction: column;
     align-items: center;
   }
-  .nav-items {
-    margin-bottom: 2rem;
-  }
+
   #menu-wrapper {
-    justify-content: space-between;
-    padding: 1rem;
+    justify-content: space-evenly;
+    padding: 0;
   }
   .logo-wrapper {
     display: flex;
@@ -207,10 +228,13 @@ p {
     width: 50%;
   }
   #filterinput {
+    flex-direction: column;
+    width: 99vw;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   #filterinput input {
     width: 40%;
     text-align: center;
@@ -219,4 +243,32 @@ p {
     height: 32px;
     width: 32px;
   }
+  #loginpage {
+    flex-direction: column;
+    justify-content: center;
+  }
+  #loginleft {
+    background-color: transparent;
+    height: 30%;
+    justify-content: flex-start;
+    width: 100% !important;
+  }
+  #loginleft h1 {
+    display: none;
+  }
+  #logowrapper {
+    width: 100vw;
+    margin: auto;
+    width: 200px;
+    max-height: 200px;
+  }
+  #signintext {
+    display: none;
+  }
+  #signinbox {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
 }

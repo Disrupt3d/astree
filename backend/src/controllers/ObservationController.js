@@ -17,7 +17,6 @@ class ObservationController {
     models.photo
       .countByUser(req.params.id)
       .then(([rows]) => {
-        console.log(res);
         res.send(rows);
       })
       .catch((err) => {
